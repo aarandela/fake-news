@@ -1,7 +1,17 @@
-const initialState = {}
+const initialState = {
+  title: 'title'
+}
 
 const reducer = (state = initialState, action) => {
-  return state
+  switch(action.type) {
+    case 'GET_TITLE':
+    let newState = JSON.parse(JSON.stringify(state))
+    return newState
+
+    default:
+    return state
+  }
+
 }
 
 export default reducer
