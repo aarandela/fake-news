@@ -1,15 +1,19 @@
 import React, { Component } from 'react'
+
+// Components
 import Title from './components/Title'
 import RealBtn from './components/RealBtn'
 import FakeBtn from './components/FakeBtn'
 import Progress from './components/Progress'
+import Start from './components/Start'
 import Timer from './components/Timer'
 import GameOver from './components/GameOver'
-import axios from 'axios';
-import Start from './components/Start'
-import Randomize from 'unique-random'
 import StartMeme from './components/StartMemes'
 import FailMeme from './components/FailMemes'
+
+// Packages
+import axios from 'axios';
+import Randomize from 'unique-random'
 
 class App extends Component {
   constructor(props) {
@@ -35,6 +39,7 @@ class App extends Component {
     this.handleTryAgain = this.handleTryAgain.bind(this)
   }
   
+  // Click function for choosing fake news
   handleFakeBtn (evt) {
     let randomizer = Randomize(1, 25)
     if (this.state.subreddit === 'TheOnion') {
@@ -51,6 +56,7 @@ class App extends Component {
     })
   }
 
+  // Click function for choosing real news
   handleRealBtn (evt) {
     let randomizer = Randomize(1, 25)
     if (this.state.subreddit === 'nottheonion') {
@@ -67,6 +73,7 @@ class App extends Component {
     })
   }
 
+  // Click button for starting the game
   handleStart (evt) {
     let randomizer = Randomize(1, 25)
     console.log(randomizer())
@@ -84,26 +91,29 @@ class App extends Component {
     window.location.reload(true)
   }
 
+  // Get data from both subreddits and put it in the state under posts
   componentDidMount () {
     axios.get('https://www.reddit.com/r/TheOnion+nottheonion.json')
       .then(response => {
-   
         let myArr = response.data.data.children
-      
         this.setState({
           posts: myArr,
-        
         })
       })
   }
 
-
   render () {
     return (
       <React.Fragment>
-        {this.state.start ? this.state.gameOver ? <GameOver handleTryAgain={this.handleTryAgain} 
-                                                            endMemes={this.state.endMemes} /> 
-        : <div className='container is-mobile'>
+        {/* ternary to start the game and also if the user chose wrong */}
+        {this.state.start ? this.state.gameOver ?
+
+        // Renders if user chooses incorrectly 
+        <GameOver handleTryAgain={this.handleTryAgain} 
+                  endMemes={this.state.endMemes} /> 
+        : 
+        // Renders the game
+        <div className='container is-mobile'>
             <Title image={this.state.image} title={this.state.title} />
               <div className='section' style={{ padding: '10px 0 10px 0' }}>
                 <div className='columns is-centered'>
@@ -115,7 +125,9 @@ class App extends Component {
               </div>
             <Progress count={this.state.count} />
         </div> 
-        : <Start start={this.handleStart} memes={this.state.startMemes} />}
+        : 
+        // Renders Modal to begin the game
+        <Start start={this.handleStart} memes={this.state.startMemes} />}
       </React.Fragment>
     )
   }

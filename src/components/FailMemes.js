@@ -10,15 +10,7 @@ const fail = [
   'https://media1.giphy.com/media/3oFyDpijVlI0bSoB8Y/giphy.gif',          
   'https://media3.giphy.com/media/l1IY5J4Cfw8JLi40M/giphy.gif',          
   'https://media.giphy.com/media/ceeN6U57leAhi/giphy.gif',          
-  'http://www.quickmeme.com/img/c1/c113dcffa98ea14ebafe0fe466e748db187912a1a3ed1307f350d457b10eaa2f.jpg',          
-  '',          
-  '',          
-  '',          
-  '',          
-  '',          
-  '',          
-  '',          
-  '',          
+  'http://www.quickmeme.com/img/c1/c113dcffa98ea14ebafe0fe466e748db187912a1a3ed1307f350d457b10eaa2f.jpg'          
 ]
 
 export default fail

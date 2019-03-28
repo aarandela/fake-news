@@ -4,7 +4,7 @@ const FakeBtn = ({handleFakeBtn}) => {
   return (
   <React.Fragment>
     <div className='column has-text-centered'>
-      <a onClick={handleFakeBtn} className='button is-danger is-large is-fullwidth'>Fake</a>
+      <a onClick={handleFakeBtn} className='button is-danger is-large is-fullwidth'>Fake News</a>
     </div>
   </React.Fragment>
   )

@@ -9,16 +9,7 @@ const startMeme = [
   'https://media0.giphy.com/media/OqAeQrGmU7lS6tENnQ/giphy.gif',          
   'https://meme.xyz/uploads/posts/t/l-21806-you-are-fake-news.jpg',          
   'https://i.imgflip.com/22g6az.jpg',          
-  'https://miro.medium.com/max/962/1*aiVVFTXm1X_kdPfpzRG4-Q.png',          
-  // '',          
-  // '',          
-  // '',          
-  // '',          
-  // '',          
-  // '',          
-  // '',          
-  // '',          
-  // '',          
+  'https://miro.medium.com/max/962/1*aiVVFTXm1X_kdPfpzRG4-Q.png'       
 ]
 
 export default startMeme
