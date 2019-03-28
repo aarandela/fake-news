@@ -1,0 +1,11 @@
+{
+  "main.js": "/fake-news/static/js/main.9fab8b4b.chunk.js",
+  "main.js.map": "/fake-news/static/js/main.9fab8b4b.chunk.js.map",
+  "runtime~main.js": "/fake-news/static/js/runtime~main.06ca0172.js",
+  "runtime~main.js.map": "/fake-news/static/js/runtime~main.06ca0172.js.map",
+  "static/js/2.9739ea5a.chunk.js": "/fake-news/static/js/2.9739ea5a.chunk.js",
+  "static/js/2.9739ea5a.chunk.js.map": "/fake-news/static/js/2.9739ea5a.chunk.js.map",
+  "index.html": "/fake-news/index.html",
+  "precache-manifest.9287bbbde2afb859c99ac84abd8cf01f.js": "/fake-news/precache-manifest.9287bbbde2afb859c99ac84abd8cf01f.js",
+  "service-worker.js": "/fake-news/service-worker.js"
+}
