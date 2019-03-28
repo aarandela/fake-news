@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 // Components
-import App from './containers/App'
+import App from './App'
 
 // Redux
 import { Provider } from 'react-redux'
