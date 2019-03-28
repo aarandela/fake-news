@@ -8,11 +8,13 @@ import GameOver from './components/GameOver'
 import axios from 'axios';
 import Start from './components/Start'
 import Randomize from 'unique-random'
+import StartMeme from './components/StartMemes'
+import FailMeme from './components/FailMemes'
 
 class App extends Component {
   constructor(props) {
     super(props)
-  
+ 
     this.state = {
        posts: [],
        title: '',
@@ -23,8 +25,9 @@ class App extends Component {
        timer: '',
        gameOver: false,
        start: false,
-       startMemes: '',
-       endMemes: ''
+       startMemes: StartMeme[Math.floor(Math.random() * StartMeme.length )],
+       endMemes: FailMeme[Math.floor(Math.random() * FailMeme.length )],
+       render: false
     }
     this.handleFakeBtn = this.handleFakeBtn.bind(this)
     this.handleRealBtn = this.handleRealBtn.bind(this)
@@ -65,30 +68,31 @@ class App extends Component {
   }
 
   handleStart (evt) {
+    let randomizer = Randomize(1, 25)
+    console.log(randomizer())
+    let myArr = this.state.posts
+    let randPost = myArr[randomizer()]
     this.setState({
-      start: true
+      start: true,
+      title: randPost.data.title,
+      image: `${randPost.data.thumbnail}`,
+      subreddit: randPost.data.subreddit
     })
   }
 
   handleTryAgain () {
-    this.setState({
-      gameOver: false,
-      start: false
-    })
+    window.location.reload(true)
   }
 
   componentDidMount () {
     axios.get('https://www.reddit.com/r/TheOnion+nottheonion.json')
       .then(response => {
-        let randomizer = Randomize(1, 25)
-        console.log(randomizer())
+   
         let myArr = response.data.data.children
-        let randPost = myArr[randomizer()]
+      
         this.setState({
-          title: randPost.data.title,
           posts: myArr,
-          image: `${randPost.data.thumbnail}`,
-          subreddit: randPost.data.subreddit
+        
         })
       })
   }
@@ -100,18 +104,18 @@ class App extends Component {
         {this.state.start ? this.state.gameOver ? <GameOver handleTryAgain={this.handleTryAgain} 
                                                             endMemes={this.state.endMemes} /> 
         : <div className='container is-mobile'>
-          <Title image={this.state.image} title={this.state.title} />
-            <div className='section' style={{ padding: '10px 0 10px 0' }}>
-              <div className='columns is-centered'>
-                <div className='column' />
-                  <RealBtn handleRealBtn={this.handleRealBtn} />
-                  <FakeBtn handleFakeBtn={this.handleFakeBtn} />
-                <div className='column' />
+            <Title image={this.state.image} title={this.state.title} />
+              <div className='section' style={{ padding: '10px 0 10px 0' }}>
+                <div className='columns is-centered'>
+                  <div className='column' />
+                    <RealBtn handleRealBtn={this.handleRealBtn} />
+                    <FakeBtn handleFakeBtn={this.handleFakeBtn} />
+                  <div className='column' />
+                </div>
               </div>
-            </div>
-        <Progress count={this.state.count} />
+            <Progress count={this.state.count} />
         </div> 
-        : <Start start={this.handleStart} memes={this.state.memes} />}
+        : <Start start={this.handleStart} memes={this.state.startMemes} />}
       </React.Fragment>
     )
   }
